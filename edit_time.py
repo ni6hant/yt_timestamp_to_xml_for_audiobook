@@ -22,10 +22,10 @@ def read_timestamp_file_and_store_in_list(timestamp_file:str):
     timestamps = []
     with open(timestamp_file) as new_file:
         for line in new_file:
-            parts = line.replace("\n","").replace(" - ","-").replace("&","and").strip().split("-")
+            parts = line.replace("\n","").replace(" - ","-").replace("&","and").strip().split("-", 1)
             
             time_string = parts[0]
-            details = parts[1]
+            details = parts[1].strip()
 
             time_seconds = time_stamp_to_seconds(time_string)
 
@@ -44,7 +44,10 @@ if __name__=="__main__":
         my_file.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?><root>\n")
         for timestamp in timestamps:
             my_file.write("\t<bookmark>\n")
-            my_file.write(f"\t\t<title>{timestamp[1]} </title>\n")
+            if len(timestamp[1])!=0:
+                my_file.write(f"\t\t<title>{timestamp[1]}</title>\n")
+            else:
+                my_file.write(f"\t\t<title> </title>\n")
             my_file.write(f"\t\t<description/>\n")
             my_file.write(f"\t\t<fileName>{fileName}</fileName>\n")
             my_file.write(f"\t\t<filePosition>{timestamp[0]}</filePosition>\n")

@@ -11,7 +11,7 @@ This python application has a very specific use case where it's only job is to c
 ```
 
  * As you can see, the timestamps needs to be first and the description is separted by `-`.
- * Make sure there are no extra `-` in the description.
+ * Make sure the first `-` is between timestamp and the description.
  * I have replaced the special character `&` with `and` as it caused error in the Android Application to be used this with.
   * Note: Please create an issue if other characters also cause issues. The issue can be seen by no bookmarks being imported at all.
  
