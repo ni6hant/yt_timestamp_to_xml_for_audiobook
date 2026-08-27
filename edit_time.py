@@ -34,7 +34,9 @@ def read_timestamp_file_and_store_in_list(timestamp_file:str):
 
 if __name__=="__main__":
     timestamps = read_timestamp_file_and_store_in_list("timestamps.txt")
-    fileName = "EFAP #400 - The Eighth Anniversary of Pausing Every Frame - Covering Everything with Everyone - 1 [wGqqvWph1BA].opus"
+    with open("filename.txt") as new_file:
+        for line in new_file:
+            fileName = line
 
     open('bookmarks.sabp.xml', 'w').close()
 
